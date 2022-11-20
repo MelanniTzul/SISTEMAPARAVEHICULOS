@@ -16,5 +16,10 @@ namespace SistemaParaVehiculos
         {
             InitializeComponent();
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("¡Bienvenido, llene el formulario!");
+        }
     }
 }

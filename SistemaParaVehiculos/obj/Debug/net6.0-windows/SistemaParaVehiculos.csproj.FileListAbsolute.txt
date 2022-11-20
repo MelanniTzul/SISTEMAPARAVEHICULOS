@@ -37,7 +37,3 @@ C:\Users\Melanni Tzul\Desktop\Curso .NET\Net c#\SistemaParaVehiculos\SistemaPara
 C:\Users\Melanni Tzul\Desktop\Curso .NET\Net c#\SistemaParaVehiculos\SistemaParaVehiculos\obj\Debug\net6.0-windows\ref\SistemaParaVehiculos.dll
 C:\Users\Melanni Tzul\Desktop\Curso .NET\Net c#\SistemaParaVehiculos\SistemaParaVehiculos\obj\Debug\net6.0-windows\SistemaParaVehiculos.Form2.resources
 C:\Users\Melanni Tzul\Desktop\Curso .NET\Net c#\SistemaParaVehiculos\SistemaParaVehiculos\obj\Debug\net6.0-windows\SistemaParaVehiculos.Form3.resources
-C:\Users\Melanni Tzul\Desktop\Curso .NET\Net c#\SistemaParaVehiculos\SistemaParaVehiculos\obj\Debug\net6.0-windows\SistemaParaVehiculos.Form4.resources
-C:\Users\Melanni Tzul\Desktop\Curso .NET\Net c#\SistemaParaVehiculos\SistemaParaVehiculos\obj\Debug\net6.0-windows\SistemaParaVehiculos.Form5.resources
-C:\Users\Melanni Tzul\Desktop\Curso .NET\Net c#\SistemaParaVehiculos\SistemaParaVehiculos\obj\Debug\net6.0-windows\SistemaParaVehiculos.Form6.resources
-C:\Users\Melanni Tzul\Desktop\Curso .NET\Net c#\SistemaParaVehiculos\SistemaParaVehiculos\obj\Debug\net6.0-windows\SistemaParaVehiculos.Form7.resources
