@@ -9,7 +9,25 @@ namespace SistemaParaVehiculos
 {
     public partial class Form1 : Form
     {
+      
+
         DataTable datos = Clases.variablesGlobales.baseDatosGlobal;//Declaramos tabla
+         
+        //Declaro variable
+        private static Form1 instancia = null;
+       
+
+        //Funcion verificar si la ventana ya esta abierta si no que me abra una nueva
+        public static Form1 ventanaUnica()
+        {
+            if(instancia == null)
+            {
+                instancia = new Form1();
+                return instancia;
+            }
+            return instancia; 
+        }
+
 
 
         public Form1()
@@ -21,9 +39,6 @@ namespace SistemaParaVehiculos
         {
             MessageBox.Show("Llene el formulario!");
         }
-
-
-
 
 
         //Funcion limpiar
@@ -59,7 +74,7 @@ namespace SistemaParaVehiculos
         {
             datos.Columns.Add("PLACA");
             datos.Columns.Add("DUEÑO");
-            datos.Columns.Add("MARCA");
+            datos.Columns.Add("M");
             datos.Columns.Add("MODELO");
             datos.Columns.Add("AÑO");
             datos.Columns.Add("CONDICION");
@@ -222,6 +237,8 @@ namespace SistemaParaVehiculos
             MessageBox.Show("¡Ingres el dato que desea buscar!");
         }
 
+
+        //Boton  de busqueda
         private void btn_BuscarPalabra_Click(object sender, EventArgs e)
         {
             if (checkBox_busqueda.Checked)//Si es true

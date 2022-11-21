@@ -13,6 +13,8 @@ namespace SistemaParaVehiculos
     public partial class Principal : Form
     {
         private int childFormNumber = 0;
+       
+        
 
         public Principal()
         {
@@ -38,40 +40,36 @@ namespace SistemaParaVehiculos
             }
         }
 
-     
-        
+
+
         //Evento de vehiculo
         private void vToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           
-            Form1 form1Vehiculo = new Form1();//creamos una variable y llamamos alformualrio que queremos mostrar 
+            // Form1 form1Vehiculo = new Form1();//creamos una variable y llamamos alformualrio que queremos mostrar 
+
+            Form1 form1Vehiculo = Form1.ventanaUnica();
             form1Vehiculo.MdiParent = this;//que se ingrente dentro de MdiParent
             form1Vehiculo.Show();//mostramos el formulario
-           
-
+            form1Vehiculo.BringToFront();//trae el formulario al frente en el foco principal
         }
 
-       
-
-      
         //Evento de dueno
         private void dUEÑOToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form2 form2Dueno = new Form2();
-            form2Dueno.MdiParent = this;
-            form2Dueno.Show();
+            Form2D form2 = Form2D.ventanaUnica();
+            form2.MdiParent = this;
+            form2.Show();
+            form2.BringToFront();
+
         }
 
-     
-
-        
-        
         //Evento de Modelo
         private void mODELOToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form3 form3Modelo = new Form3();
+            Form3 form3Modelo =Form3.ventanaUnica();
             form3Modelo.MdiParent = this;
             form3Modelo.Show();
+            form3Modelo.BringToFront();
         }
 
         

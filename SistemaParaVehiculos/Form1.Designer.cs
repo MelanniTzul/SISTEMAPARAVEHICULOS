@@ -157,7 +157,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.txt_dueno.Location = new System.Drawing.Point(143, 257);
             this.txt_dueno.Name = "txt_dueno";
-            this.txt_dueno.Size = new System.Drawing.Size(408, 27);
+            this.txt_dueno.Size = new System.Drawing.Size(240, 27);
             this.txt_dueno.TabIndex = 17;
             // 
             // combo_marca
