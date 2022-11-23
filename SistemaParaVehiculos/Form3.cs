@@ -12,7 +12,7 @@ namespace SistemaParaVehiculos
 {
     public partial class Form3 : Form
     {
-        DataTable datosFrom3 = Clases.variablesGlobales.baseDatosGlobal;//Declaramos tabla
+        DataTable datosFrom3 = new DataTable();//Declaramos tabla
 
 
         private static Form3 instancia = null;
@@ -61,7 +61,7 @@ namespace SistemaParaVehiculos
         {
             datosFrom3.Columns.Add("MARCA");
             datosFrom3.Columns.Add("DESCRIPCION");
-            datosFrom3.Columns.Add("es");
+            datosFrom3.Columns.Add("ESTADO");
             dataGridView3.DataSource = datosFrom3;
 
             //Ingresar datos al comboBox marca

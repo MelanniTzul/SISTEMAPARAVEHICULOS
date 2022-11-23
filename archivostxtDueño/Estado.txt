@@ -1,0 +1,2 @@
+1. ACTIVO,
+2. INACTIVO

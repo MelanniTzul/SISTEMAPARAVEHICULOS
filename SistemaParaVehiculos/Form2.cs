@@ -8,13 +8,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics.Eventing.Reader;
 
 namespace SistemaParaVehiculos
 {
     public partial class Form2D : Form
     {
 
-        DataTable datosFor2 = Clases.variablesGlobales.baseDatosGlobal;  //Declaramos la tabla
+        DataTable datosFor2 = new DataTable();  //Declaramos la tabla
 
         private static Form2D instancia = null;
 
@@ -56,7 +57,7 @@ namespace SistemaParaVehiculos
         }
 
 
-        //Funcion que lee el archivo
+       //Funcion que lee el archivo
         public void mostrarDatosTabla()
         {
             //Funcion para leer el archivo
@@ -70,6 +71,46 @@ namespace SistemaParaVehiculos
             dataGridView2.DataSource = datosFor2;
             sr.Close();
         }
+
+        public void leerArchivoEstado()
+        {
+
+            //Funcion para leer el archivo
+            StreamReader sr = new StreamReader(variablesGlobales.rutaEstado);//definimos la ruta
+            while (!sr.EndOfStream)//mientras no sea el final de linea entra
+            {
+                string linea = sr.ReadLine();//Lee la linea
+                string[] aux = linea.Split(',');//separa la cadena por coma crea un vector y los almacena en posiciones       
+                for (int i = 0; i < aux.Length; i++)
+                {
+                    comboEstado.Items.Add(aux[i]);
+                }
+            }
+            sr.Close();
+        }
+
+        public void Genero()
+        {
+
+            //Funcion para leer el archivo
+            StreamReader sr = new StreamReader(variablesGlobales.rutaGenero);//definimos la ruta
+            while (!sr.EndOfStream)//mientras no sea el final de linea entra
+            {
+                string linea = sr.ReadLine();//Lee la linea
+                string[] aux = linea.Split(',');//separa la cadena por coma crea un vector y los almacena en posiciones       
+                for (int i = 0; i < aux.Length; i++)
+                {
+                    comboGenero.Items.Add(aux[i]);
+                }
+            }
+            sr.Close();
+        }
+
+
+
+
+
+
 
         //Ingreso de datos a la tabal ycomboBox
         private void Form2_Load(object sender, EventArgs e)
@@ -89,29 +130,8 @@ namespace SistemaParaVehiculos
             datosFor2.Columns.Add("ESTADO");
             dataGridView2.DataSource = datosFor2;//Asignamos columnas a la tabla
 
-            //Llenando comboBox de genero
-            DataTable datosGenero = new DataTable();
-            datosGenero.Columns.Add("VALOR");//ID
-            datosGenero.Columns.Add("MOSTRAR");//NOMBRE O DESCRIPCION
-
-            datosGenero.Rows.Add("1", "FEMENINO");
-            datosGenero.Rows.Add("2", "MASCULINO");
-            datosGenero.Rows.Add("3", "NO BINARIO");
-            comboGenero.DataSource = datosGenero;
-            comboGenero.DisplayMember = "MOSTRAR";
-            comboGenero.ValueMember = "VALOR";
-
-            //Llenar comboBox estado
-
-            DataTable datosEstado = new DataTable();//Creamos tabla        
-            datosEstado.Columns.Add("VALOR");//ID
-            datosEstado.Columns.Add("MOSTRAR");//nombre o descripcion
-            datosEstado.Rows.Add("1", "ACTIVO");
-            datosEstado.Rows.Add("0", "INACTIVO");
-            comboEstado.DataSource = datosEstado;
-            comboEstado.DisplayMember = "MOSTRAR";
-            comboEstado.ValueMember = "VALOR";
-
+            leerArchivoEstado();
+            Genero();
         }
 
 

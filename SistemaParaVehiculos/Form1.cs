@@ -2,6 +2,7 @@ using SistemaParaVehiculos.Clases;
 using System;
 using System.Data;
 using System.Diagnostics.Eventing.Reader;
+using System.Windows.Forms;
 
 namespace SistemaParaVehiculos
 
@@ -9,23 +10,22 @@ namespace SistemaParaVehiculos
 {
     public partial class Form1 : Form
     {
-      
 
-        DataTable datos = Clases.variablesGlobales.baseDatosGlobal;//Declaramos tabla
-         
+        DataTable datos = new DataTable();//Declaramos tabla     
+
         //Declaro variable
         private static Form1 instancia = null;
-       
+
 
         //Funcion verificar si la ventana ya esta abierta si no que me abra una nueva
         public static Form1 ventanaUnica()
         {
-            if(instancia == null)
+            if (instancia == null)
             {
                 instancia = new Form1();
                 return instancia;
             }
-            return instancia; 
+            return instancia;
         }
 
 
@@ -33,6 +33,7 @@ namespace SistemaParaVehiculos
         public Form1()
         {
             InitializeComponent();
+
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -70,6 +71,81 @@ namespace SistemaParaVehiculos
             sr.Close();
         }
 
+        //Funcion que me lee el archivo para llenar comboBox de año
+        public void leerYearCombo()
+        {
+
+            //Funcion para leer el archivo
+            StreamReader sr = new StreamReader(variablesGlobales.rutaYear);//definimos la ruta
+            while (!sr.EndOfStream)//mientras no sea el final de linea entra
+            {
+                string linea = sr.ReadLine();//Lee la linea
+                string[] aux = linea.Split(',');//separa la cadena por coma crea un vector y los almacena en posiciones       
+                for (int i = 0; i < aux.Length; i++)
+                {
+                    combo_year.Items.Add(aux[i]);
+                }
+            }
+            sr.Close();
+        }
+
+        //Funcion que me lee el archivo cargado y me muesta en el comboBox Marca
+        public void leerArchivoMarca()
+        {
+
+            //Funcion para leer el archivo
+            StreamReader sr = new StreamReader(variablesGlobales.rutaMarca);//definimos la ruta
+            while (!sr.EndOfStream)//mientras no sea el final de linea entra
+            {
+                string linea = sr.ReadLine();//Lee la linea
+                string[] aux = linea.Split(',');//separa la cadena por coma crea un vector y los almacena en posiciones       
+                for (int i = 0; i < aux.Length; i++)
+                {
+                    combo_marca.Items.Add(aux[i]);
+                }
+            }
+            sr.Close();
+        }
+
+        //Funcion que me lee el archivo cargado y llena comboBox Modelo
+        public void leerArchivoModelo()
+        {
+
+            //Funcion para leer el archivo
+            StreamReader sr = new StreamReader(variablesGlobales.rutaModeloo);//definimos la ruta
+            while (!sr.EndOfStream)//mientras no sea el final de linea entra
+            {
+                string linea = sr.ReadLine();//Lee la linea
+                string[] aux = linea.Split(',');//separa la cadena por coma crea un vector y los almacena en posiciones       
+                for (int i = 0; i < aux.Length; i++)
+                {
+                    combo_modelo.Items.Add(aux[i]);
+                }
+            }
+            sr.Close();
+        }
+
+        //Funcion que me carga el archivo, lee y llena comboBox 
+        public void leerArchivoCondicion()
+        {
+
+            //Funcion para leer el archivo condicion y llenar comboBox condicion
+            StreamReader sr = new StreamReader(variablesGlobales.rutaCondicion);//definimos la ruta
+            while (!sr.EndOfStream)//mientras no sea el final de linea entra
+            {
+                string linea = sr.ReadLine();//Lee la linea
+                string[] aux = linea.Split(',');//separa la cadena por coma crea un vector y los almacena en posiciones       
+                for (int i = 0; i < aux.Length; i++)
+                {
+                    combo_condicion.Items.Add(aux[i]);
+                }
+            }
+            sr.Close();
+        }
+
+
+
+
         private void Form1_Load(object sender, EventArgs e)
         {
             datos.Columns.Add("PLACA");
@@ -80,72 +156,13 @@ namespace SistemaParaVehiculos
             datos.Columns.Add("CONDICION");
             dataGridView1.DataSource = datos;//Asignamos columnas
             mostrarDatosTabla();//Mostramos la tabla
-
-            //Llenando comboBox de marca
-            DataTable datosMarca = new DataTable();
-            datosMarca.Columns.Add("VALOR");//ID
-            datosMarca.Columns.Add("MOSTRAR");//nombre//Descripcion
-
-            datosMarca.Rows.Add("1", "BMW");
-            datosMarca.Rows.Add("2", "MAZDA");
-            datosMarca.Rows.Add("3", "TOYOTA");
-            datosMarca.Rows.Add("4", "HONDA");
-            datosMarca.Rows.Add("5", "SUZUKI");
-            combo_marca.DataSource = datosMarca; //Llenamos comboBox
-            combo_marca.DisplayMember = "MOSTRAR";//Indicamos que vamos a mostrar
-            combo_marca.ValueMember = "VALOR";//indicamos quien es el que nos va servir para estar operando
-
-            //Llenando comboBox de modelo
-            DataTable datosModelo = new DataTable();
-            datosModelo.Columns.Add("VALOR");//ID
-            datosModelo.Columns.Add("MOSTRAR");//nombre//Descripcion
-
-            datosModelo.Rows.Add("1", "RAV 4");
-            datosModelo.Rows.Add("2", "YARIS");
-            datosModelo.Rows.Add("3", "COROLA");
-            datosModelo.Rows.Add("4", "CRV");
-            datosModelo.Rows.Add("5", "CIVIC");
-            datosModelo.Rows.Add("6", "ALTO");
-            datosModelo.Rows.Add("7", "B3");
-            combo_modelo.DataSource = datosModelo;//Llenamos comboBox
-            combo_modelo.DisplayMember = "MOSTRAR";
-            combo_modelo.ValueMember = "VALOR";
-
-            //Llenando comboBox de year
-            DataTable datosAn = new DataTable();
-            datosAn.Columns.Add("VALOR");//ID
-            datosAn.Columns.Add("MOSTRAR");//Nombre o descripcion
-
-            datosAn.Rows.Add("1", "2010");
-            datosAn.Rows.Add("2", "2011");
-            datosAn.Rows.Add("3", "2012");
-            datosAn.Rows.Add("4", "2013");
-            datosAn.Rows.Add("5", "2014");
-            datosAn.Rows.Add("6", "2015");
-            datosAn.Rows.Add("7", "2016");
-            datosAn.Rows.Add("8", "2017");
-            datosAn.Rows.Add("9", "2018");
-            datosAn.Rows.Add("10", "2019");
-
-            combo_year.DataSource = datosAn;//Llenamos comboBox
-            combo_year.DisplayMember = "MOSTRAR";
-            combo_year.ValueMember = "VALOR";
-
-            //Llenando comboBox de condicion
-            DataTable datosCondicion = new DataTable();//Creacion de tabla
-            datosCondicion.Columns.Add("VALOR");//ID
-            datosCondicion.Columns.Add("MOSTRAR");//nombre o descripcion
-
-            datosCondicion.Rows.Add("1", "NUEVO");
-            datosCondicion.Rows.Add("2", "SEMI NUEVO");
-            datosCondicion.Rows.Add("3", "RODADO");
-            datosCondicion.Rows.Add("4", "AGENCIA");
-
-            combo_condicion.DataSource = datosCondicion;//Llenamos comboBox
-            combo_condicion.DisplayMember = "MOSTRAR";
-            combo_condicion.ValueMember = "VALOR";
-
+            
+            leerArchivoMarca();
+            leerArchivoModelo();
+            leerArchivoCondicion();
+            leerYearCombo(); 
         }
+
 
         //Guardar datos -Ingresarlos en el dataGridView
         private void btn_guardarDatos_Click(object sender, EventArgs e)
@@ -258,7 +275,8 @@ namespace SistemaParaVehiculos
                     {
                         lbl_palabraBuscada.Text = datos.Rows[i][0].ToString() + "," + datos.Rows[i][1].ToString() + "," + datos.Rows[i][2].ToString() + "," + datos.Rows[i][3].ToString() + "," + datos.Rows[i][4].ToString() + "," + datos.Rows[i][5].ToString();
                     }
-                    else if (datos.Rows[i][4].ToString().Contains(combo_year.Text)){
+                    else if (datos.Rows[i][4].ToString().Contains(combo_year.Text))
+                    {
                         lbl_palabraBuscada.Text = datos.Rows[i][0].ToString() + "," + datos.Rows[i][1].ToString() + "," + datos.Rows[i][2].ToString() + "," + datos.Rows[i][3].ToString() + "," + datos.Rows[i][4].ToString() + "," + datos.Rows[i][5].ToString();
                     }
                     else if (datos.Rows[i][5].ToString().Contains(combo_condicion.Text))
@@ -268,15 +286,16 @@ namespace SistemaParaVehiculos
 
                 }
 
-            }else
+            }
+            else
             {
                 //Buscar por placa
                 if (txt_buscarPalabra.Text != String.Empty)//Hace la accion si encuentra datos
                 {
                     //Recorrer base de datos
-                    for(int i=0; i<datos.Rows.Count; i++)
+                    for (int i = 0; i < datos.Rows.Count; i++)
                     {
-                        if (datos.Rows[i][0].ToString()==txt_placa.Text)
+                        if (datos.Rows[i][0].ToString() == txt_placa.Text)
                         {
                             lbl_palabraBuscada.Text = datos.Rows[i][0].ToString() + "," + datos.Rows[i][1].ToString() + "," + datos.Rows[i][2].ToString() + "," + datos.Rows[i][3].ToString() + "," + datos.Rows[i][4].ToString() + "," + datos.Rows[i][5].ToString();
                         }

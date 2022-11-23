@@ -46,6 +46,7 @@
             this.lblPalabraBuscada = new System.Windows.Forms.Label();
             this.btnBuscarPalabra = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -80,11 +81,11 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.lblDescripcion.AutoSize = true;
             this.lblDescripcion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblDescripcion.Location = new System.Drawing.Point(92, 326);
+            this.lblDescripcion.Location = new System.Drawing.Point(92, 330);
             this.lblDescripcion.Name = "lblDescripcion";
-            this.lblDescripcion.Size = new System.Drawing.Size(106, 20);
+            this.lblDescripcion.Size = new System.Drawing.Size(129, 20);
             this.lblDescripcion.TabIndex = 2;
-            this.lblDescripcion.Text = "DESCRIPCION";
+            this.lblDescripcion.Text = "NOMBRE CARRO";
             // 
             // lblEstado
             // 
@@ -113,7 +114,7 @@
             this.comboDescripcion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.comboDescripcion.FormattingEnabled = true;
-            this.comboDescripcion.Location = new System.Drawing.Point(258, 318);
+            this.comboDescripcion.Location = new System.Drawing.Point(190, 174);
             this.comboDescripcion.Name = "comboDescripcion";
             this.comboDescripcion.Size = new System.Drawing.Size(151, 28);
             this.comboDescripcion.TabIndex = 5;
@@ -239,11 +240,19 @@
             this.label1.TabIndex = 16;
             this.label1.Text = "Formulario de modelo";
             // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(258, 321);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(149, 27);
+            this.textBox2.TabIndex = 17;
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1104, 681);
+            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnBuscarPalabra);
             this.Controls.Add(this.lblPalabraBuscada);
@@ -291,5 +300,6 @@
         private Label lblPalabraBuscada;
         private Button btnBuscarPalabra;
         private Label label1;
+        private TextBox textBox2;
     }
 }
